@@ -49,14 +49,12 @@ function Navbar() {
       left: 0,
       right: 0,}}>
           <Container className='flex flex-col gap-y-4 md:flex-row md:justify-between md:items-center'>
-      <header className='flex justify-center items-center'>
-        <p className='text-3xl sm:text-3xl font-[600] tracking-widest text-[#353535]'><Link href={"/"}> VIJYAPANA</Link></p>
-        </header>
+      
         <div className='hidden md:block h-full'>
-        <ul className="right flex gap-x-8 tracking-wider font-thin">
+        <ul className="right flex gap-x-4 tracking-wider font-thin">
       <li className='cursor-pointer'><Link href={"/"}>Home</Link></li>
      <li className='relative cursor-pointer group '>Collections
-      <div className='grid-cols-5 hidden absolute  group-hover:grid gap-x-2 bg-white -bottom-0.5 translate-y-[100%] z-30 w-[80vw] -translate-x-1/2 border rounded-md shadow-md p-4'>
+      <div className='grid-cols-5 hidden absolute  group-hover:grid gap-x-2 bg-white -bottom-0.5 translate-y-[100%] z-30 w-[80vw] -translate-x-16 border rounded-md shadow-md p-4'>
         <div>
           <h1 className='font-medium text-gray-700 flex items-center gap-x-1'><FaVideo/>Product Shoot</h1>
           <div className='ml-2'>
@@ -122,6 +120,9 @@ function Navbar() {
       <li className='cursor-pointer'><Link href={"/career"}>Carrer</Link></li>
       </ul>
         </div>
+        <header className='flex justify-center items-center md:-translate-x-24'>
+        <p className='text-3xl sm:text-3xl font-[600] tracking-widest text-[#353535]'><Link href={"/"}> VIJYAPANA</Link></p>
+        </header>
         <div className='hidden md:block'>
         <div className="right flex gap-x-4">
       
@@ -134,7 +135,6 @@ function Navbar() {
       <Hamburger/>
       </div>
       <div className="right flex gap-x-4">
-      
       <IoCallSharp className='h-4 w-4'/>
       </div>
     </nav>

@@ -1,4 +1,6 @@
+'use client';
 import React from 'react'
+import Autoplay from "embla-carousel-autoplay"
 import {
     Carousel,
     CarouselContent,
@@ -15,7 +17,12 @@ import Image from 'next/image'
 import TalkToUsBTN from './TalkToUsBTN';
 function hero() {
   return (
-    <Carousel className="h-screen mt-[106px] md:mt-[64px]">
+    <Carousel opts={{
+      loop:true
+    }} plugins={[
+      Autoplay({
+        delay: 4000,
+      }),]} className="h-screen mt-[106px] md:mt-[64px]">
   <CarouselContent>
     <CarouselItem >
         <div className='h-screen relative '>
@@ -35,7 +42,7 @@ function hero() {
   </CarouselContent>
   <CarouselPrevious />
   <CarouselNext />
-  <TalkToUsBTN className={"absolute right-4 md:right-6 bottom-6 md:top-6"}/>
+  <TalkToUsBTN className={"absolute right-4 md:right-6 bottom-6 md:bottom-6"}/>
 </Carousel>
 
 
