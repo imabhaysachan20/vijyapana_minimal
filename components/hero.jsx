@@ -21,7 +21,7 @@ function hero() {
       loop:true
     }} plugins={[
       Autoplay({
-        delay: 4000,
+        delay: 3000,
       }),]} className="h-screen mt-[106px] md:mt-[64px]">
   <CarouselContent>
     <CarouselItem >

@@ -51,7 +51,7 @@ function Navbar() {
           <Container className='flex flex-col gap-y-4 md:flex-row md:justify-between md:items-center'>
       
         <div className='hidden md:block h-full'>
-        <ul className="right flex gap-x-4 tracking-wider font-thin">
+        <ul className="right flex text-sm font-semibold gap-x-4 tracking-normal uppercase ">
       <li className='cursor-pointer'><Link href={"/"}>Home</Link></li>
      <li className='relative cursor-pointer group '>Collections
       <div className='grid-cols-5 hidden absolute  group-hover:grid gap-x-2 bg-white -bottom-0.5 translate-y-[100%] z-30 w-[80vw] -translate-x-16 border rounded-md shadow-md p-4'>
@@ -120,7 +120,7 @@ function Navbar() {
       <li className='cursor-pointer'><Link href={"/career"}>Carrer</Link></li>
       </ul>
         </div>
-        <header className='flex justify-center items-center md:-translate-x-24'>
+        <header className='flex justify-center items-center md:-translate-x-28'>
         <p className='text-3xl sm:text-3xl font-[600] tracking-widest text-[#353535]'><Link href={"/"}> VIJYAPANA</Link></p>
         </header>
         <div className='hidden md:block'>
