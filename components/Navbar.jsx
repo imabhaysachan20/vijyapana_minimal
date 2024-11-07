@@ -1,8 +1,11 @@
 "use client"
 import React, { useState,useEffect } from 'react'
+import { getServices } from '@/lib/contentful'
+import { IoLogoWhatsapp } from "react-icons/io";
 import Hamburger from './hamburger';
 import { Input } from "@/components/ui/input"
 import { MdAudiotrack } from "react-icons/md";
+import { FaHandPointRight } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { BsPrinterFill } from "react-icons/bs";
 import { FaVideo } from "react-icons/fa6";
@@ -14,7 +17,14 @@ import Link from 'next/link';
 function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-
+  const [services,setServices] = useState([])
+  useEffect(()=>{
+    const get = async()=>{
+      const res = await getServices()
+      setServices(res);
+    }
+    get()
+  },[])
   const handleScroll = () => {
     if (typeof window !== 'undefined') {
       // Get current scroll position
@@ -39,6 +49,7 @@ function Navbar() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [lastScrollY]);
+  
   return (
     
     <div className=' py-4 z-30 bg-white shadow-md '  style={{
@@ -53,66 +64,22 @@ function Navbar() {
         <div className='hidden md:block h-full'>
         <ul className="right flex text-sm font-semibold gap-x-4 tracking-normal uppercase ">
       <li className='cursor-pointer'><Link href={"/"}>Home</Link></li>
-     <li className='relative cursor-pointer group '>Collections
-      <div className='grid-cols-5 hidden absolute  group-hover:grid gap-x-2 bg-white -bottom-0.5 translate-y-[100%] z-30 w-[80vw] -translate-x-16 border rounded-md shadow-md p-4'>
-        <div>
-          <h1 className='font-medium text-gray-700 flex items-center gap-x-1'><FaVideo/>Product Shoot</h1>
-          <div className='ml-2'>
-          <p className='text-sm mt-1'>Video Shoot</p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
+     <li className='relative cursor-pointer group '>Services
+      
+      <div style={{gridTemplateColumns: `repeat(${services.length}, minmax(0, 1fr))`}} className='hidden absolute  group-hover:grid gap-x-4 bg-white -bottom-0.5 translate-y-[100%] z-30 w-[80vw] -translate-x-16 border rounded-md shadow-md p-4'>
+        
+        {services.map((s)=>{
+          return <div>
+          <h1 className='font-medium text-gray-700 flex items-center gap-x-1'><FaHandPointRight/>{s.name}</h1>
+            <div className='ml-2'>
+              {s.dropdownpoints.map((p)=>{
+                return <p className='text-sm my-2'>{p}</p>
+              })}
+            </div>
           </div>
-        </div>
-        <div>
-        <h1 className='font-medium text-gray-700 flex items-center gap-x-1'><MdAudiotrack/>Audio Book</h1>
-          <div className='ml-2'>
-          <p className='text-sm mt-1'>Video Shoot</p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          </div>
-        </div>
-        <div>
-        <div>
-        <h1 className='font-medium text-gray-700 flex items-center gap-x-1'><BsPrinterFill />Print Media</h1>
-          <div className='ml-2'>
-          <p className='text-sm mt-1'>Video Shoot</p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          </div>
-        </div>
-        </div>
-        <div>
-        <div>
-        <h1 className='font-medium text-gray-700 flex items-center gap-x-1'><BsPrinterFill />Social Media Creative</h1>
-          <div className='ml-2'>
-          <p className='text-sm mt-1'>Video Shoot</p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          </div>
-        </div>
-        </div>
-        <div>
-        <div>
-        <h1 className='font-medium text-gray-700 flex items-center gap-x-1'><FaGift />Corporate Gifts</h1>
-          <div className='ml-2'>
-          <p className='text-sm mt-1'>Video Shoot</p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          <p className='text-sm mt-0.25'>Lorem ipsum </p>
-          </div>
-        </div>
-        </div>
-        <div>
-        </div>
+        })}
+        
+    
     
       </div>
      </li>
@@ -120,13 +87,14 @@ function Navbar() {
       <li className='cursor-pointer'><Link href={"/career"}>Carrer</Link></li>
       </ul>
         </div>
-        <header className='flex justify-center items-center md:-translate-x-28'>
+        <header className='flex justify-center items-center md:-translate-x-24'>
         <p className='text-3xl sm:text-3xl font-[600] tracking-widest text-[#353535]'><Link href={"/"}> VIJYAPANA</Link></p>
         </header>
         <div className='hidden md:block'>
         <div className="right flex gap-x-4">
       
       <IoCallSharp className='h-4 w-4'/>
+      <IoLogoWhatsapp className='h-4 w-4'/>
       </div>
         </div>
        
@@ -136,6 +104,7 @@ function Navbar() {
       </div>
       <div className="right flex gap-x-4">
       <IoCallSharp className='h-4 w-4'/>
+      <IoLogoWhatsapp className='h-4 w-4'/>
       </div>
     </nav>
     </Container>

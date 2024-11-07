@@ -1,50 +1,45 @@
 "use client"
-import React from 'react';
-import { FaCode, FaCamera, FaPrint, FaBookOpen, FaGift, FaPaintBrush } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import React from 'react'
+import { IoIosDownload } from "react-icons/io";
+import img from "@/public/hampers/1.jpeg"
+import { FaEye } from "react-icons/fa";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+  } from "@/components/ui/card"
+import Image from 'next/image'
 
-const services = [
-  { name: "Web and App Development", icon: <FaCode /> },
-  { name: "Product Shoot", icon: <FaCamera /> },
-  { name: "Print Media", icon: <FaPrint /> },
-  { name: "Audio Book", icon: <FaBookOpen /> },
-  { name: "Corporate Gifts", icon: <FaGift /> },
-  { name: "Social Media Creatives", icon: <FaPaintBrush /> }
-];
-
-// Variants for the animation
-const itemVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
-};
-
-const GridContainer = () => {
+function ProductCard() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
-      {services.map((service, index) => (
-        <motion.div
-          key={index}
-          className="group relative bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 text-gray-800 p-8 text-center rounded-xl shadow-md transform transition duration-300 hover:scale-105 hover:shadow-lg"
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-200 via-purple-200 to-pink-200 opacity-0 group-hover:opacity-40 rounded-xl transition duration-300"></div>
-
-          {/* Icon for the service */}
-          <div className="relative z-10 text-4xl mb-4 text-purple-500">
-            {service.icon}
-          </div>
+    <Card>
+    <CardHeader>
+        <div className='flex justify-center w-full relative group'>
+      <Image src ={img} alt="product" width={"200"} height={"200"} className='w-full'/>  
+          <div className="absolute inset-0 bg-[rgb(0,0,0,0)] group-hover:bg-[rgb(0,0,0,0.3)] duration-500  text-xl flex justify-center items-center gap-x-3">
+            <div className="opacity-0 group-hover:opacity-100 flex gap-x-2">
+              <div className="bg-black flex items-center justify-center h-8 w-8 rounded-lg" >
+          <IoIosDownload className='text-white cursor-pointer'/>
           
-          <h2 className="relative z-10 text-xl font-semibold">{service.name}</h2>
-          <p className="relative z-10 mt-2 text-sm text-gray-600">
-            Explore our {service.name.toLowerCase()} services.
-          </p>
-        </motion.div>
-      ))}
-    </div>
-  );
-};
+          </div>
+              <div className="bg-black flex items-center justify-center h-8 w-8 rounded-lg" >
+              <FaEye onClick={()=>setVisible(true)} className='text-white  cursor-pointer'/>
+          </div>
+          </div>
+      </div>
+      </div>
+    </CardHeader>
+    <CardContent className="flex justify-center">
+    <CardTitle className="uppercase tracking-wider font-bold text-gray-700 text-[1rem]">Bag PhotoShoot</CardTitle>
+    </CardContent>
+    <CardFooter className="flex justify-center">
+    
+    </CardFooter>
+  </Card>
+  )
+}
 
-export default GridContainer;
+export default ProductCard
