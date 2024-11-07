@@ -3,14 +3,9 @@ import React, { useState,useEffect } from 'react'
 import { getServices } from '@/lib/contentful'
 import { IoLogoWhatsapp } from "react-icons/io";
 import Hamburger from './hamburger';
-import { Input } from "@/components/ui/input"
-import { MdAudiotrack } from "react-icons/md";
+import {v4 as uuid} from "uuid"
 import { FaHandPointRight } from "react-icons/fa";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { BsPrinterFill } from "react-icons/bs";
-import { FaVideo } from "react-icons/fa6";
-import { IoMdSearch } from "react-icons/io";
-import { FaGift } from "react-icons/fa";
+
 import { IoCallSharp } from "react-icons/io5";
 import  Container from "@/components/container";
 import Link from 'next/link';
@@ -69,11 +64,11 @@ function Navbar() {
       <div style={{gridTemplateColumns: `repeat(${services.length}, minmax(0, 1fr))`}} className='hidden absolute  group-hover:grid gap-x-4 bg-white -bottom-0.5 translate-y-[100%] z-30 w-[80vw] -translate-x-16 border rounded-md shadow-md p-4'>
         
         {services.map((s)=>{
-          return <div>
+          return <div key ={uuid()}>
           <h1 className='font-medium text-gray-700 flex items-center gap-x-1'><FaHandPointRight/>{s.name}</h1>
             <div className='ml-2'>
               {s.dropdownpoints.map((p)=>{
-                return <p className='text-sm my-2'>{p}</p>
+                return <p key={uuid()} className='text-sm my-2'>{p}</p>
               })}
             </div>
           </div>
