@@ -16,7 +16,7 @@ export default function ContactUs() {
         Connect with Us
       </h1>
       <p className="text-center text-gray-700 mb-10 text-lg">
-        Feel free to reach out for any project or query. We're here to help!
+        Feel free to reach out for any project or query. We&apos;re here to help!
       </p>
       
       <div className="flex flex-col md:flex-row items-center justify-center space-y-10 md:space-y-0 md:space-x-10">
