@@ -1,6 +1,7 @@
 import React from 'react'
 import ProductCard from './ProductCard'
-import { v4 as uuid } from 'uuid'
+import {v4 as uuid} from "uuid"
+
 
 
 function ProductContainer({products,setVisible,setActiveProduct}) {
