@@ -1,5 +1,5 @@
 import Image from "next/image"
-
+import { v4 as uuidv4 } from 'uuid';
 import {
     Carousel,
     CarouselContent,
@@ -21,7 +21,7 @@ function ProductDetails({products,visible,setVisible,activeProduct,setActiveProd
         <Carousel className="h-64 w-64">
   <CarouselContent>
     {images?.map((img)=>{
-      return <CarouselItem key={randomUUID()}>
+      return <CarouselItem key={uuidv4()}>
       <div className="w-64 h-64">
           <Image alt="product" width={200} height={200} src={img} className="w-full h-full"></Image>
       </div>

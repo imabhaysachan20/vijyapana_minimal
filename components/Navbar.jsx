@@ -93,7 +93,7 @@ function Navbar() {
         <div className='hidden md:block'>
         <div className="right flex gap-x-4">
       
-      <IoCallSharp className='h-4 w-4'/>
+      <Link href={"/contact"}><IoCallSharp className='h-4 w-4'/></Link>
       <IoLogoWhatsapp className='h-4 w-4'/>
       </div>
         </div>
@@ -103,7 +103,7 @@ function Navbar() {
       <Hamburger/>
       </div>
       <div className="right flex gap-x-4">
-      <IoCallSharp className='h-4 w-4'/>
+      <Link href={"/contact"}><IoCallSharp className='h-4 w-4'/></Link>
       <IoLogoWhatsapp className='h-4 w-4'/>
       </div>
     </nav>
