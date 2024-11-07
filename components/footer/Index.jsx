@@ -1,11 +1,24 @@
-import React from 'react'
+import React from 'react';
+import Image from 'next/image';
 import { FaInstagram } from "react-icons/fa6";
 import { FaFacebookSquare } from "react-icons/fa";
+import contactImage from "@/public/images/front_logo_C.png"
 
 import { FaLinkedin } from "react-icons/fa";
 import Container from '../container';
 function Index() {
-  return (<Container>
+  return (
+  <Container>
+      <div className="relative w-full h-[300px] md:h-[500px] bg-cover bg-center">
+        <Image 
+          src={contactImage} 
+          alt="Contact Us"
+          layout="fill" 
+          objectFit="contain" 
+        />
+        
+      </div>
+  
     <footer className='flex flex-col md:flex-row mt-24 pt-12 border-t-2 cursor-pointer'>
         <div className='w-full md:w-1/2 text-2xl'>
         <p className='text-center mb-4 '>Social Links</p>

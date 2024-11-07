@@ -6,13 +6,13 @@ import { useInterval } from 'react-use'
 
 // Sample image data (replace with your own images)
 const images1 = [
-  'hero/2.jpg',
+  'hero/product01.png',
   'hero/3.jpg',
   'hero/2.jpg',
 ]
 
 const images2 = [
-  'hero/2.jpg',
+  'hero/product01.png',
   'hero/3.jpg',
   'hero/2.jpg',
 ]
